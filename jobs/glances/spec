@@ -1,0 +1,13 @@
+---
+name: glances
+packages: []
+templates:
+  bin/monit_debugger: bin/monit_debugger
+  bin/glances_ctl: bin/glances_ctl
+  config/glances.conf.erb: config/glances.conf
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+properties:
+  glances.leader_address:
+    description: Hostname/IP to the leader/master of the cluster

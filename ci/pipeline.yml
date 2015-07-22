@@ -35,40 +35,6 @@ jobs:
           bosh_username: {{bosh-lite-build-username}}
           bosh_password: {{bosh-lite-build-password}}
           bosh_deployment_name: {{bosh-lite-build-deployment-name}}
-    # - task: bosh-run-errand-acceptance-tests
-    #   config:
-    #     platform: linux
-    #     image: {{docker-hub-task-image}}
-    #     inputs:
-    #       - {name: create-release-and-deploy, path: .}
-    #     run:
-    #       path: ./glances-boshrelease/ci/scripts/acceptance_tests.sh
-    #       args: []
-    #     params:
-    #       bosh_target: {{bosh-lite-build-target}}
-    #       bosh_username: {{bosh-lite-build-username}}
-    #       bosh_password: {{bosh-lite-build-password}}
-    #   on_failure:
-    #     put: slack-devs
-    #     params:
-    #       text: <!here> acceptance tests failed http://ci.starkandwayne.com:8080/pipelines/glances-boshrelease (deploy job)
-    #       channel: "#bot-glances"
-    #       username: concourse
-    #       icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
-    on_failure:
-      put: slack-devs
-      params:
-        text: <!here> deploy job failed http://ci.starkandwayne.com:8080/pipelines/glances-boshrelease
-        channel: "#bot-glances"
-        username: concourse
-        icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
-    on_success:
-      put: slack-devs
-      params:
-        text: <!here> deploy & tests succeeded
-        channel: "#bot-glances"
-        username: concourse
-        icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
 
 - name: rc
   public: true
@@ -118,62 +84,47 @@ jobs:
   public: true
   serial: true
   plan:
-  - do:
-    - aggregate:
-      - get: version
-        passed: [rc]
-        params: {bump: final}
-      - get: boshrelease
-        resource: git-glances-boshrelease
-        passed: [rc]
-    - task: create-final-release
-      config:
-        platform: linux
-        image: {{docker-hub-task-image}}
-        inputs:
-        - {name: boshrelease, path: glances-boshrelease}
-        - {name: version}
-        run:
-          path: ./glances-boshrelease/ci/scripts/shipit.sh
-          args: []
-        params:
-          release_name: "glances"
-          bosh_target: {{bosh-lite-build-target}}
-          bosh_username: {{bosh-lite-build-username}}
-          bosh_password: {{bosh-lite-build-password}}
-          bosh_deployment_name: {{bosh-lite-build-deployment-name}}
-          aws_access_key_id: {{pipeline-aws-access-key-id}}
-          aws_secret_access_key: {{pipeline-aws-secret-access-key}}
-          promotion_branch: master
-    - put: git-glances-boshrelease
+  - aggregate:
+    - get: version
+      passed: [rc]
+      params: {bump: final}
+    - get: boshrelease
+      resource: git-glances-boshrelease
+      passed: [rc]
+  - task: create-final-release
+    config:
+      platform: linux
+      image: {{docker-hub-task-image}}
+      inputs:
+      - {name: boshrelease, path: glances-boshrelease}
+      - {name: version}
+      run:
+        path: ./glances-boshrelease/ci/scripts/shipit.sh
+        args: []
       params:
-        repository: create-final-release/glances-boshrelease
-        rebase: true
-    - aggregate:
-      - put: version
-        params: {file: version/number}
-      - put: final-release
-        params: {from: create-final-release/glances-boshrelease/releases/glances/glances-(.*).tgz}
-      - put: github-final-release
-        params:
-          name: create-final-release/glances-boshrelease/release/name
-          tag: create-final-release/glances-boshrelease/release/tag
-          body: create-final-release/glances-boshrelease/release/notes.md
-          globs: [create-final-release/glances-boshrelease/releases/glances/glances-*.tgz]
-    on_failure:
-      put: slack-devs
+        release_name: "Glances BOSH Release"
+        bosh_target: {{bosh-lite-build-target}}
+        bosh_username: {{bosh-lite-build-username}}
+        bosh_password: {{bosh-lite-build-password}}
+        bosh_deployment_name: {{bosh-lite-build-deployment-name}}
+        aws_access_key_id: {{pipeline-aws-access-key-id}}
+        aws_secret_access_key: {{pipeline-aws-secret-access-key}}
+        promotion_branch: master
+  - put: git-glances-boshrelease
+    params:
+      repository: create-final-release/glances-boshrelease
+      rebase: true
+  - aggregate:
+    - put: version
+      params: {file: version/number}
+    - put: final-release
+      params: {from: create-final-release/glances-boshrelease/releases/glances/glances-(.*).tgz}
+    - put: github-final-release
       params:
-        text: <!here> shipit job failed http://ci.starkandwayne.com:8080/pipelines/glances-boshrelease
-        channel: "#bot-glances"
-        username: concourse
-        icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
-    on_success:
-      put: slack-devs
-      params:
-        text_file: create-final-release/glances-boshrelease/release/slack_success_message.txt
-        channel: "#bot-tor"
-        username: concourse
-        icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
+        name: create-final-release/glances-boshrelease/release/name
+        tag: create-final-release/glances-boshrelease/release/tag
+        body: create-final-release/glances-boshrelease/release/notes.md
+        globs: [create-final-release/glances-boshrelease/releases/glances/glances-*.tgz]
 
 resources:
 - name: version
@@ -207,7 +158,7 @@ resources:
 - name: github-final-release
   type: github-release
   source:
-    user: starkandwayne
+    user: cloudfoundry-community
     repository: glances-boshrelease
     access_token: {{github-access-token}}
 
@@ -218,8 +169,3 @@ resources:
     regexp: glances-(.*).tgz
     access_key_id: {{pipeline-aws-access-key-id}}
     secret_access_key: {{pipeline-aws-secret-access-key}}
-
-- name: slack-devs
-  type: slack-notification
-  source:
-    url: {{slack-devs-webhook}}

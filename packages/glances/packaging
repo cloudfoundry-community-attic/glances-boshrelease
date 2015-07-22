@@ -1,0 +1,30 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Detect # of CPUs so make jobs can be parallelized
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+
+tar xzf glances/Python-2.7.10.tgz
+pushd Python-2.7.10
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make -j${CPUS} && make install
+popd
+
+tar xzf glances/setuptools-18.0.1.tar.gz
+pushd setuptools-18.0.1
+${BOSH_INSTALL_TARGET}/bin/python2 setup.py install --prefix=${BOSH_INSTALL_TARGET}
+popd
+
+tar xzf glances/pip-7.1.0.tar.gz
+pushd pip-7.1.0
+${BOSH_INSTALL_TARGET}/bin/python2 setup.py install --prefix=${BOSH_INSTALL_TARGET}
+popd
+
+${BOSH_INSTALL_TARGET}/bin/pip install glances/six-1.9.0-py2.py3-none-any.whl
+${BOSH_INSTALL_TARGET}/bin/pip install glances/requests-2.7.0-py2.py3-none-any.whl
+${BOSH_INSTALL_TARGET}/bin/pip install glances/bottle-0.12.8.tar.gz
+${BOSH_INSTALL_TARGET}/bin/pip install glances/influxdb-2.6.0-py2.py3-none-any.whl
+${BOSH_INSTALL_TARGET}/bin/pip install glances/websocket_client-0.32.0.tar.gz
+${BOSH_INSTALL_TARGET}/bin/pip install glances/docker-py-1.2.3.tar.gz
+${BOSH_INSTALL_TARGET}/bin/pip install glances/psutil-3.0.1.tar.gz
+${BOSH_INSTALL_TARGET}/bin/pip install --install-option="--install-scripts=${BOSH_INSTALL_TARGET}/bin" glances/Glances-2.4.2.tar.gz

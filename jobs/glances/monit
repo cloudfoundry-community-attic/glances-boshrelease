@@ -1,5 +1,0 @@
-check process glances
-  with pidfile /var/vcap/sys/run/glances/glances.pid
-  start program "/var/vcap/jobs/glances/bin/monit_debugger glances_ctl '/var/vcap/jobs/glances/bin/glances_ctl start'"
-  stop program "/var/vcap/jobs/glances/bin/monit_debugger glances_ctl '/var/vcap/jobs/glances/bin/glances_ctl stop'"
-  group vcap

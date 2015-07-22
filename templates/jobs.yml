@@ -9,28 +9,13 @@ update:
   serial: false
 
 jobs:
-  - name: glances_leader_z1
+  - name: glances
     templates:
     - name: glances
       release: glances
     instances: 0
     resource_pool: small_z1
     networks: (( merge ))
-    persistent_disk: 0
-    properties: {}
-  - name: glances_z1
-    templates:
-    - name: glances
-      release: glances
-    instances: 0
-    resource_pool: small_z1
-    networks: (( merge ))
-    persistent_disk: 0
-    update:
-      canaries: 10
-    properties:
-      glances:
-        leader_address: (( merge ))
 
 networks: (( merge ))
 

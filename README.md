@@ -1,5 +1,7 @@
 # BOSH Release for glances
 
+[Glances](https://github.com/nicolargo/glances) is a cross-platform curses-based system monitoring tool written in Python. This is a 'better' htop. Include this bosh release and run `/var/vcap/packages/glances/bin/glances`
+
 ## Usage
 
 To use this bosh release, first upload it to your bosh:

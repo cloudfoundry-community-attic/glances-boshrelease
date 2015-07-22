@@ -1,1 +1,41 @@
---- {}
+---
+glances/bottle-0.12.8.tar.gz:
+  object_id: 0e54115d-2047-4cda-8140-c46c0d91106a
+  sha: 428b9a9bf34bbea92d4f975874eaa9b78f051a5b
+  size: 69414
+glances/docker-py-1.2.3.tar.gz:
+  object_id: ad208947-10b6-4158-8f20-83b02f9382d9
+  sha: 47617271af939cec9d1424c8cd7c66d401c456df
+  size: 48242
+glances/Glances-2.4.2.tar.gz:
+  object_id: e36e097c-c25f-402c-aafb-223ec5e1eea2
+  sha: e19fd11a1f248e00070837cc3d724b6a3a35dbd0
+  size: 5497895
+glances/influxdb-2.6.0-py2.py3-none-any.whl:
+  object_id: 44d1d7b6-08ca-4b83-b276-deade2b270fe
+  sha: e8e1ff54ebdd9a9df6bd8787bcebac7c0c2d534b
+  size: 56895
+glances/pip-7.1.0.tar.gz:
+  object_id: 03c23b3c-8352-4e35-b952-0f699f53960c
+  sha: f0254e9b58d29268125fdf08e4cac303592f26d6
+  size: 1049267
+glances/Python-2.7.10.tgz:
+  object_id: 02eb2a19-8b37-4fd4-8523-0d89c1bc4377
+  sha: 49089f1f6ab445dc8ace97beeb276095c4c8039b
+  size: 16768806
+glances/requests-2.7.0-py2.py3-none-any.whl:
+  object_id: 15e433c9-79d5-4418-8614-0bd670f2bf7f
+  sha: fc698280c2c29d442187d3a80a2b41c18739de3b
+  size: 470641
+glances/setuptools-18.0.1.tar.gz:
+  object_id: 727dc9f3-041e-4469-a7ba-4098f2f34e17
+  sha: ebc4fe81b7f6d61d923d9519f589903824044f52
+  size: 630585
+glances/six-1.9.0-py2.py3-none-any.whl:
+  object_id: ab032536-cdab-417d-b810-fdb9b5de58f2
+  sha: 87c40e62532048e19146e2c61f76e359a2be6413
+  size: 10222
+glances/websocket_client-0.32.0.tar.gz:
+  object_id: 7ed1a165-1b1e-4122-aaeb-d4533963ac2a
+  sha: 9df03f0e64167be9fabe113c99297a4a8774f4fb
+  size: 192180

@@ -1,0 +1,15 @@
+---
+name: glances
+dependencies: {}
+files:
+- glances/Python-2.7.10.tgz
+- glances/pip-7.1.0.tar.gz
+- glances/setuptools-18.0.1.tar.gz
+- glances/psutil-3.0.1.tar.gz
+- glances/Glances-2.4.2.tar.gz
+- glances/requests-2.7.0-py2.py3-none-any.whl
+- glances/docker-py-1.2.3.tar.gz
+- glances/websocket_client-0.32.0.tar.gz
+- glances/six-1.9.0-py2.py3-none-any.whl
+- glances/bottle-0.12.8.tar.gz
+- glances/influxdb-2.6.0-py2.py3-none-any.whl

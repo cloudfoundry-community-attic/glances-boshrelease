@@ -61,5 +61,5 @@ bosh target ${BOSH_TARGET}
 
 bosh -n create release --final --with-tarball --version "$version"
 
-git add -A
+git add .
 git commit -m "release v${version}"

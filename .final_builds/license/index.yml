@@ -1,0 +1,9 @@
+---
+builds:
+  !binary "NzkyNjdkYjJlNzUxNmU1MDRkZmU3NzNhZmRmZDAzYTVlY2ZhZjQzYQ==":
+    version: !binary |-
+      NzkyNjdkYjJlNzUxNmU1MDRkZmU3NzNhZmRmZDAzYTVlY2ZhZjQzYQ==
+    sha1: !binary |-
+      MTdhOGQxM2YwYmJmNDBmMjFlOTViYTIzMjliZDNiZDcwNmRmN2E3YQ==
+    blobstore_id: 4d9fe11b-a04a-407b-b09b-55184e42b944
+format-version: '2'

@@ -57,6 +57,9 @@ git config --global user.name "CI Bot"
 
 git merge --no-edit ${promotion_branch}
 
+git add .
+git commit -m "adding release"
+
 bosh target ${BOSH_TARGET}
 
 bosh -n create release --final --with-tarball --version "$version"

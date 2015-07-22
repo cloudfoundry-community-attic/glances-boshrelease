@@ -1,0 +1,29 @@
+---
+packages:
+- name: glances
+  version: !binary |-
+    ZTRkNzA5YzgyN2Q4MTAxMWQ3NTFlZGFmNGM5NzY1MmQxMWUyNjk4OQ==
+  fingerprint: !binary |-
+    ZTRkNzA5YzgyN2Q4MTAxMWQ3NTFlZGFmNGM5NzY1MmQxMWUyNjk4OQ==
+  sha1: !binary |-
+    ZDlkZGZhM2IyOGI5N2M1ZDgyMGY2YWQ1NGRjM2U0MzExYjJhMjI0Ng==
+  dependencies: []
+jobs:
+- name: glances
+  version: !binary |-
+    ZWJhYWIwMjZhMTUwNmY0M2NjNmZlNWQ0NWQ0ZTVjM2IwZDdmZDUwNQ==
+  fingerprint: !binary |-
+    ZWJhYWIwMjZhMTUwNmY0M2NjNmZlNWQ0NWQ0ZTVjM2IwZDdmZDUwNQ==
+  sha1: !binary |-
+    MzU0NmY2NDAwNDJiNGE3ZmJiNzQ0NDJlYzBjZGM1MWM4OGFmNDUzYw==
+license:
+  version: !binary |-
+    NzkyNjdkYjJlNzUxNmU1MDRkZmU3NzNhZmRmZDAzYTVlY2ZhZjQzYQ==
+  fingerprint: !binary |-
+    NzkyNjdkYjJlNzUxNmU1MDRkZmU3NzNhZmRmZDAzYTVlY2ZhZjQzYQ==
+  sha1: !binary |-
+    MTdhOGQxM2YwYmJmNDBmMjFlOTViYTIzMjliZDNiZDcwNmRmN2E3YQ==
+commit_hash: b7da7f19
+uncommitted_changes: false
+name: glances
+version: 1.0.7

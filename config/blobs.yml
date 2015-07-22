@@ -39,3 +39,7 @@ glances/websocket_client-0.32.0.tar.gz:
   object_id: 7ed1a165-1b1e-4122-aaeb-d4533963ac2a
   sha: 9df03f0e64167be9fabe113c99297a4a8774f4fb
   size: 192180
+glances/psutil-3.0.1.tar.gz:
+  object_id: 9a66b45b-ac75-47c7-82ee-25cefea02efd
+  sha: 5de623355ea98c90894007900979bb047ecc97d0
+  size: 241539
